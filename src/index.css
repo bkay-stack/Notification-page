@@ -10,13 +10,14 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  /* align-items: center; */
   height: 100vh;
 }
 
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
+  /* font-optical-sizing: auto; */
+  /* font-style: normal; */
   font-weight: 500, 800;
 }
 
@@ -49,4 +50,5 @@ image {
   --grayish-blue: hsl(219, 14%, 63%);
   --dark-grayish-blue: hsl(219, 12%, 42%);
   --very-dark-blue: hsl(224, 21%, 14%);
+  --faint: hsl(217, 23%, 75%);
 }

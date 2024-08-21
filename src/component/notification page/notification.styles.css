@@ -5,6 +5,58 @@
   justify-content: space-between;
 }
 
-.noti {
+.icon-count {
+  background-color: var(--blue);
+  color: var(--white);
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+}
+
+.card-header p {
+  color: var(--dark-grayish-blue);
+}
+
+/* Notification content */
+
+.notify-content p {
+  color: var(--grayish-blue);
+}
+
+.notify-cont {
   display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  gap: 0.8rem;
+  margin-top: 1rem;
+  background-color: var(--very-light-grayish-blue);
+  padding: 0.9rem;
+  border-radius: 10px;
+}
+
+.bold {
+  color: var(--very-dark-blue);
+  font-weight: bold;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: var(--red);
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+.mins {
+  color: var(--faint);
+}
+
+.faint {
+  color: var(--dark-grayish-blue);
+}
+
+.notify-cont img {
+  object-fit: contain;
+  width: 40px;
+  /* outline: 1px solid red; */
 }
