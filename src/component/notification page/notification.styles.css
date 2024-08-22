@@ -22,6 +22,8 @@
   color: var(--grayish-blue);
 }
 
+/* Utility classes */
+
 .notify-cont {
   display: flex;
   /* justify-content: center; */
@@ -33,9 +35,32 @@
   border-radius: 10px;
 }
 
+.notify-cont-1 {
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  gap: 0.8rem;
+  margin-top: 1rem;
+  /* background-color: var(--very-light-grayish-blue); */
+  padding: 0.9rem;
+  border-radius: 10px;
+}
+
+.notify-cont img {
+  object-fit: contain;
+  width: 40px;
+  /* outline: 1px solid red; */
+}
+
+.notify-cont-1 img {
+  object-fit: contain;
+  width: 40px;
+}
+
 .bold {
   color: var(--very-dark-blue);
   font-weight: bold;
+  margin-right: 0.3rem;
 }
 
 .dot {
@@ -55,8 +80,22 @@
   color: var(--dark-grayish-blue);
 }
 
-.notify-cont img {
-  object-fit: contain;
-  width: 40px;
-  /* outline: 1px solid red; */
+.blue {
+  color: var(--blue);
+  font-weight: bold;
+  margin-left: 0.3rem;
+}
+
+.comment {
+  /* background-color: ; */
+  border: 1px solid var(--grayish-blue);
+  padding: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+/* Kim */
+
+.kim-person-wrap {
+  display: flex;
+  gap: 0.7rem;
 }
