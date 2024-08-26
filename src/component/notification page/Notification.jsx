@@ -27,7 +27,10 @@ const Notification = () => {
           <div className="mark-cont">
             <p>
               <span className="bold">Mark Webber</span> reacted to your recent
-              post <span className="faint">My first tournament today!</span>
+              post{" "}
+              <span className="faint blue-hover">
+                My first tournament today!
+              </span>
               <div className="dot"></div>
             </p>
             <span className="mins">1 mins</span>
@@ -42,7 +45,7 @@ const Notification = () => {
           </div>
           <div className="mark-cont">
             <p>
-              <span className="bold">Angela Gray</span>followed you
+              <span className="bold blue-hover">Angela Gray</span>followed you
               <div className="dot"></div>
             </p>
             <span className="mins">5 mins</span>
