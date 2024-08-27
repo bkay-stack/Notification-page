@@ -13,7 +13,7 @@ const Notification = () => {
     <div className="card-wrap">
       <div className="card-header">
         <h3>
-          Notifications <span className="icon-count">3</span>
+          Notifications <span className="icon-count"></span>
         </h3>
         <p>Mark all as read</p>
       </div>
