@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import "./notification.styles.css";
 import avatarMark from "../../images/avatar-mark-webber.webp";
 import avatarAngela from "../../images/avatar-angela-gray.webp";
@@ -8,140 +8,125 @@ import avatarKim from "../../images/avatar-kimberly-smith.webp";
 import avatarChess from "../../images/image-chess.webp";
 import avatarNath from "../../images/avatar-nathan-peterson.webp";
 import avatarAnna from "../../images/avatar-anna-kim.webp";
+
 const Notification = () => {
+  const [notifications, setNotifications] = useState([
+    {
+      id: 1,
+      name: "Mark Webber",
+      action: "reacted to your recent post",
+      post: "My first tournament today!",
+      time: "1 mins",
+      read: false,
+      avatar: avatarMark,
+    },
+    {
+      id: 2,
+      name: "Angela Gray",
+      action: "followed you",
+      time: "5 mins",
+      read: false,
+      avatar: avatarAngela,
+    },
+    {
+      id: 3,
+      name: "Jacob Thompson",
+      action: "has joined your group",
+      group: "Chess Club",
+      time: "1 day ago",
+      read: false,
+      avatar: avatarJacob,
+    },
+    {
+      id: 4,
+      name: "Rizky Hasanuddin",
+      action: "sent you a private message",
+      message:
+        "Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and I'm already having lots of fun and improving my game.",
+      time: "1 day ago",
+      read: false,
+      avatar: avatarRizky,
+    },
+    {
+      id: 5,
+      name: "Kimberly Smith",
+      action: "commented on your picture",
+      time: "1 week ago",
+      read: false,
+      avatar: avatarKim,
+      image: avatarChess,
+    },
+    {
+      id: 6,
+      name: "Mark Webber",
+      action: "reacted to your recent post",
+      post: "5 end-game strategies to increase your win rate",
+      time: "2 weeks ago",
+      read: false,
+      avatar: avatarNath,
+    },
+    {
+      id: 7,
+      name: "Jacob Thompson",
+      action: "left the group",
+      group: "Chess Club",
+      time: "2 weeks ago",
+      read: false,
+      avatar: avatarAnna,
+    },
+  ]);
+
+  const [allRead, setAllRead] = useState(false);
+
+  const unreadCount = notifications.filter((notif) => !notif.read).length;
+
+  const toggleMarkAllAsRead = () => {
+    const updatedNotifications = notifications.map((notif) => ({
+      ...notif,
+      read: !allRead,
+    }));
+    setNotifications(updatedNotifications);
+    setAllRead(!allRead);
+  };
+
   return (
     <div className="card-wrap">
       <div className="card-header">
         <h3>
-          Notifications <span className="icon-count"></span>
+          Notifications <span className="icon-count">{unreadCount}</span>
         </h3>
-        <p>Mark all as read</p>
+        <p className="mark-all" onClick={toggleMarkAllAsRead}>
+          {allRead ? "Mark all as unread" : "Mark all as read"}
+        </p>
       </div>
       <div className="notify-content">
-        {/* Mark Webber */}
-
-        <div className="notify-cont">
-          <div className="mark-img">
-            <img src={avatarMark} alt="" />
-          </div>
-          <div className="mark-cont">
-            <p>
-              <span className="bold">Mark Webber</span> reacted to your recent
-              post{" "}
-              <span className="faint blue-hover">
-                My first tournament today!
-              </span>
-              <div className="dot"></div>
-            </p>
-            <span className="mins">1 mins</span>
-          </div>
-        </div>
-
-        {/* Angela Gray section */}
-
-        <div className="notify-cont">
-          <div className="mark-img">
-            <img src={avatarAngela} alt="" />
-          </div>
-          <div className="mark-cont">
-            <p>
-              <span className="bold blue-hover">Angela Gray</span>followed you
-              <div className="dot"></div>
-            </p>
-            <span className="mins">5 mins</span>
-          </div>
-        </div>
-
-        {/* Jacob Thompson section */}
-
-        <div className="notify-cont">
-          <div className="mark-img">
-            <img src={avatarJacob} alt="" />
-          </div>
-          <div className="mark-cont">
-            <p>
-              <span className="bold">Jacob Thompson</span> has joined your group{" "}
-              <span className="blue">Chess Club</span>{" "}
-              <div className="dot"></div>
-            </p>
-            <span className="mins"> 1 day ago</span>
-          </div>
-        </div>
-
-        {/* Rizky Hasanuddin section */}
-
-        <div className="notify-cont-1">
-          <div className="mark-img">
-            <img src={avatarRizky} alt="" />
-          </div>
-          <div className="mark-cont">
-            <p>
-              <span className="bold">Rizky Hasanuddin</span>sent you a private
-              message
-            </p>
-            {/* <div className="comment"> */}
-            <p className="comment">
-              Hello, thanks for setting up the Chess Club. I've been a member
-              for a few weeks now and I'm already having lots of fun and
-              improving my game.
-            </p>
-            {/* </div> */}
-            <span className="mins"> 1 day ago</span>
-          </div>
-        </div>
-
-        {/* Kimberly Smith section*/}
-
-        <div className="notify-cont-1">
-          <div className="kim-person-wrap">
+        {notifications.map((notif) => (
+          <div
+            key={notif.id}
+            className={`notify-cont ${notif.read ? "read" : "unread"}`}
+          >
             <div className="mark-img">
-              <img src={avatarKim} alt="" />
+              <img src={notif.avatar} alt={`${notif.name}`} />
             </div>
             <div className="mark-cont">
               <p>
-                <span className="bold">Jacob Thompson</span> commented on your
-                picture
+                <span className="bold">{notif.name}</span> {notif.action}{" "}
+                {notif.post && (
+                  <span className="faint blue-hover">{notif.post}</span>
+                )}
+                {notif.group && <span className="blue">{notif.group}</span>}
+                {!notif.read && <div className="dot"></div>}
               </p>
-              <span className="mins"> 1 week ago</span>
+              {notif.message && <p className="comment">{notif.message}</p>}
+              <span className="mins">{notif.time}</span>
             </div>
-            <div className="chess">
-              <img src={avatarChess} alt="" />
-            </div>
+            {notif.image && (
+              <div className="chess">
+                <img src={notif.image} alt="related" />
+              </div>
+            )}
           </div>
-        </div>
-
-        {/*Nathan Peterson  Section */}
-
-        <div className="notify-cont-1">
-          <div className="mark-img">
-            <img src={avatarNath} alt="" />
-          </div>
-          <div className="mark-cont">
-            <p>
-              <span className="bold">Mark Webber</span> reacted to your recent
-              post{" "}
-              <span className="faint">
-                5 end-game strategies to increase your win rate
-              </span>
-            </p>
-            <span className="mins">2 weeks ago</span>
-          </div>
-        </div>
-
-        {/* Anna Kim section */}
-
-        <div className="notify-cont-1">
-          <div className="mark-img">
-            <img src={avatarAnna} alt="" />
-          </div>
-          <div className="mark-cont">
-            <p>
-              <span className="bold">Jacob Thompson</span> left the group
-              <span className="blue">Chess Club</span>{" "}
-            </p>
-            <span className="mins"> 2 weeks ago</span>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
