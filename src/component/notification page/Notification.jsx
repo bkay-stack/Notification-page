@@ -89,6 +89,8 @@ const Notification = () => {
     setAllRead(!allRead);
   };
 
+  const markAllText = allRead ? "Mark all as unread" : "Mark all as read";
+
   return (
     <div className="card-wrap">
       <div className="card-header">
@@ -96,7 +98,7 @@ const Notification = () => {
           Notifications <span className="icon-count">{unreadCount}</span>
         </h3>
         <p className="mark-all" onClick={toggleMarkAllAsRead}>
-          {allRead ? "Mark all as unread" : "Mark all as read"}
+          {markAllText}
         </p>
       </div>
       <div className="notify-content">
